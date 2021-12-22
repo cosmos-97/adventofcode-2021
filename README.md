@@ -1,0 +1,16 @@
+# 🎄 [Advent of Code 2021](https://adventofcode.com/2021/)
+
+![Language](https://badgen.net/badge/Language/Go/blue)
+
+## Run the solution for one day (e.g. day 01)
+
+* Get repo
+* Run in root e.g. `go run Day_1_Sonar_Sweep/sonar_sweep.go`
+
+## Overview
+
+| Task 	| Theme                	  | Progress?  	|
+|------	|------------------------ |-----------	|
+| 01   	| Sonar Sweep          	  | ⭐️⭐️        |
+| 02   	| Dive!                	  | ⭐️⭐️        |
+| 03   	| Binary Diagnostic    	  | ⭐️⭐️        |
