@@ -1,7 +1,5 @@
 # 🎄 [Advent of Code 2021](https://adventofcode.com/2021/)
 
-![Language](https://badgen.net/badge/Language/Go/blue)
-
 ## Run the solution for one day (e.g. day 01)
 
 * Get repo
