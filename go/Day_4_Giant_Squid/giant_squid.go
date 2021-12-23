@@ -39,15 +39,6 @@ func (bf *BingoField) sumUncheckedFields() int {
 	return sum
 }
 
-func (bf *BingoField) printBoard() {
-	for _, row := range bf.field_values {
-		fmt.Println(row)
-	}
-	for _, row := range bf.fields_checks {
-		fmt.Println(row)
-	}
-}
-
 func (bf *BingoField) hasBingo() bool {
 	for _, row := range bf.fields_checks {
 		isBingo := true
@@ -87,7 +78,7 @@ func lineToBoardLine(line string) []int {
 	return arr
 }
 
-func main() {
+func partOne() {
 	var bingoFields []BingoField
 	var arrayNumbers []string
 
@@ -141,4 +132,73 @@ func main() {
 			break
 		}
 	}
+}
+
+func partTwo() {
+	var bingoFields []BingoField
+	var arrayNumbers []string
+
+	dataByte, err := os.ReadFile("puzzle_input.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	dataStr := string(dataByte)
+	lines := strings.Split(dataStr, "\n")
+
+	arrayNumbers = strings.Split(lines[0], ",")
+	lines = lines[2:]
+
+	for {
+
+		bingoFieldData := make([][]int, 5)
+		bingoFieldBoolData := make([][]bool, 5)
+
+		for i := 0; i < 5; i++ {
+			bingoFieldData[i] = lineToBoardLine(lines[i])
+			bingoFieldBoolData[i] = []bool{false, false, false, false, false}
+		}
+
+		bingofield := BingoField{field_values: bingoFieldData, fields_checks: bingoFieldBoolData}
+		bingoFields = append(bingoFields, bingofield)
+		if len(lines) >= 6 {
+			lines = lines[6:]
+		} else {
+			break
+		}
+	}
+
+	for _, numberStr := range arrayNumbers {
+		index := 0
+		numberInt, err := strconv.Atoi(numberStr)
+
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		for {
+			if len(bingoFields) <= index {
+				break
+			}
+
+			bingo := bingoFields[index]
+			bingo.ckeckFieldValue(numberInt)
+
+			if bingo.hasBingo() {
+				if len(bingoFields) == 1 {
+					fmt.Println("Part Two: ", bingo.sumUncheckedFields()*numberInt)
+				}
+				bingoFields = append(bingoFields[:index], bingoFields[index+1:]...)
+				continue
+			}
+
+			index++
+		}
+
+	}
+}
+
+func main() {
+	partOne()
+	partTwo()
 }

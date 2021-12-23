@@ -7,8 +7,9 @@
 
 ## Overview
 
-| Task 	| Theme                	  | Progress?  	|
+| Task 	| Title                	  | Progress  	|
 |------	|------------------------ |-----------	|
 | 01   	| Sonar Sweep          	  | ⭐️⭐️        |
 | 02   	| Dive!                	  | ⭐️⭐️        |
 | 03   	| Binary Diagnostic    	  | ⭐️⭐️        |
+| 04   	| Giant Squid    	      | ⭐️⭐️        |
